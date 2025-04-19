@@ -1,0 +1,74 @@
+name: Update Payments
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Payment Date (YYYY-MM-DD)'
+        required: true
+      principalAmountPaid:
+        description: 'Principal Amount'
+        required: true
+      interestPaid:
+        description: 'Interest Amount'
+        required: true
+      totalAmountPaid:
+        description: 'Total Emi Paid'
+        required: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Update payments.json
+        run: |
+          FILE=src/data/payments.json
+
+          # Ensure payments file exists
+          if [ ! -f "$FILE" ]; then
+            echo "[]" > "$FILE"
+          fi
+
+          # Extract inputs from GitHub Action
+          principal="${{ github.event.inputs.principalAmountPaid }}"
+          interest="${{ github.event.inputs.interestPaid }}"
+          total="${{ github.event.inputs.totalAmountPaid }}"
+          date="${{ github.event.inputs.date }}"
+
+          # Validate that principal + interest == total
+          computed_total=$(echo "$principal + $interest" | bc)
+          total_check=$(echo "$computed_total == $total" | bc)
+
+          if [ "$total_check" -ne 1 ]; then
+            echo "❌ Validation failed: principal ($principal) + interest ($interest) ≠ total ($total)"
+            exit 1
+          fi
+
+          echo "✅ Validation passed: $principal + $interest = $total"
+
+          # Safely build and append new JSON entry
+          NEW_ENTRY=$(jq -n \
+            --arg date "$date" \
+            --argjson principal "$principal" \
+            --argjson interest "$interest" \
+            '{date: $date, principalAmountPaid: $principal, interestPaid: $interest}')
+
+          echo "Appending: $NEW_ENTRY"
+
+          jq ". + [$NEW_ENTRY]" "$FILE" > tmp.json && mv tmp.json "$FILE"
+
+
+      - name: Commit and push
+        run: |
+          git add public/payments.json
+          git commit -m "Add payment for ${{ github.event.inputs.date }}"
+          git push

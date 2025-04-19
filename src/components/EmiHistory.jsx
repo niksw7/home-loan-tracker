@@ -5,7 +5,7 @@ export default function EmiHistory({ history }) {
   const [editPayment, setEditPayment] = useState(null);
 
   const handleTripleClick = (row) => {
-    console.log("sahaeb aaya ye", row);
+  
     const totalAmount = Number(row.principalAmount) + Number(row.interestAmount);
     setEditRow(prev => (prev?.date === row.date ? null : row));
     setEditPayment({ amount: totalAmount });
@@ -16,7 +16,7 @@ export default function EmiHistory({ history }) {
   };
 
   const handleSubmit = async () => {
-    console.log("--------", editPayment)
+   
     if (!editPayment?.amount || !editRow) return;
 
     const paymentUpdate = {
