@@ -23,5 +23,10 @@
     "date": "2025-09-01",
     "principalAmountPaid": 100,
     "interestPaid": 10
+  },
+  {
+    "date": "2025-10-01",
+    "principalAmountPaid": 10000,
+    "interestPaid": 10
   }
 ]
