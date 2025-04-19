@@ -1,7 +1,27 @@
 [
-  { "date": "2025-05-01","principalAmountPaid": 60000,"interestPaid":"40000" },
-  { "date": "2025-06-01","principalAmountPaid": 60000,"interestPaid":"40000" },
-  { "date": "2025-07-01","principalAmountPaid": 5100000,"interestPaid":"40000" },
-  { "date": "2025-08-01","principalAmountPaid": 50000,"interestPaid":"40000" }
-
+  {
+    "date": "2025-05-01",
+    "principalAmountPaid": 60000,
+    "interestPaid": "40000"
+  },
+  {
+    "date": "2025-06-01",
+    "principalAmountPaid": 60000,
+    "interestPaid": "40000"
+  },
+  {
+    "date": "2025-07-01",
+    "principalAmountPaid": 5100000,
+    "interestPaid": "40000"
+  },
+  {
+    "date": "2025-08-01",
+    "principalAmountPaid": 50000,
+    "interestPaid": "40000"
+  },
+  {
+    "date": "2025-09-01",
+    "principalAmountPaid": 100,
+    "interestPaid": 10
+  }
 ]
