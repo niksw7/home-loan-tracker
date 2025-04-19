@@ -15,7 +15,8 @@ on:
       totalAmountPaid:
         description: 'Total EMI Paid'
         required: true
-
+permissions:
+  contents: write
 jobs:
   update:
     runs-on: ubuntu-latest
