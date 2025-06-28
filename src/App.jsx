@@ -5,10 +5,10 @@ import EmiHistory from './components/EmiHistory';
 import payments from './data/payments.json';
 
 const loanInfo = {
-  amount: 6000000,
-  interestRate: 8.5,
+  amount: 6894091,
+  interestRate: 8.1,
   emi: 100000,
-  startDate: '2025-05-01',
+  startDate: '2025-06-01',
   tenureMonths: 120
 };
 
