@@ -9,7 +9,7 @@ const loanInfo = {
   interestRate: 8.1,
   emi: 100000,
   startDate: '2025-06-01',
-  tenureMonths: 120
+  tenureMonths: 93
 };
 
 export default function App() {
