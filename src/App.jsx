@@ -8,7 +8,7 @@ const loanInfo = {
   amount: 6894091,
   interestRate: 8.1,
   emi: 100000,
-  startDate: '2025-06-01',
+  startDate: '2025-07-01',
   tenureMonths: 93
 };
 
