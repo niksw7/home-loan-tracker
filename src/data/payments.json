@@ -3,5 +3,10 @@
     "date": "2025-07-01",
     "principalAmountPaid": 53465,
     "interestPaid": 46535
+  },
+  {
+    "date": "2025-08-01",
+    "principalAmountPaid": 53826,
+    "interestPaid": 46174
   }
 ]
