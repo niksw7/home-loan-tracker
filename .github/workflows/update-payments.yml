@@ -65,7 +65,7 @@ jobs:
 
           echo "Appending: $NEW_ENTRY"
 
-          jq ". + [$NEW_ENTRY]" "$FILE" > tmp.json && mv tmp.json "$FILE"
+          jq ". += [$NEW_ENTRY]" "$FILE" > tmp.json && mv tmp.json "$FILE"
 
       - name: Commit and push changes
         run: |
